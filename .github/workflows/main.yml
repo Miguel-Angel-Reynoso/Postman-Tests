@@ -11,7 +11,8 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install Postman CLI
-        run: curl -o- "https://dl-cli.pstmn.io/install/linux.sh" | sh
+        run: |
+          curl -L https://dl-cli.pstmn.io/install/linux.sh | sh
 
       - name: Run Postman collection
         run: postman collection run 15854072-26217b20-8007-4512-8889-8d5680add8a0 --iteration-data booking1.csv --reporters cli,html --reporter-html-export results.html
