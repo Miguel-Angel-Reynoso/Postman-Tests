@@ -15,3 +15,9 @@ jobs:
 
       - name: Run Postman collection
         run: npx postman collection run TestCollection.postman_collection.json --iteration-data booking1.csv --reporters cli,html --reporter-html-export results.html
+
+      - name: Upload test report
+        uses: actions/upload-artifact@v3
+        with:
+          name: postman-report
+          path: results.html
