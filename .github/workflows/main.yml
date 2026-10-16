@@ -1,6 +1,6 @@
 name: Run Postman Tests
 
-on: [push]   # Se ejecuta cada vez que subes cambios al repo
+on: [push]
 
 jobs:
   test:
@@ -11,8 +11,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install Postman CLI
-        run: |
-          curl -L https://dl-cli.pstmn.io/install/linux.sh | sh
+        run: npm install -g postman-cli
 
       - name: Run Postman collection
-        run: postman collection run 15854072-26217b20-8007-4512-8889-8d5680add8a0 --iteration-data booking1.csv --reporters cli,html --reporter-html-export results.html
+        run: postman collection run Test Collection N.postman_collection.json --iteration-data booking1.csv --reporters cli,html --reporter-html-export results.html
